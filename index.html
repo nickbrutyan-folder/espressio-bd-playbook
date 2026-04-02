@@ -313,8 +313,10 @@ function handleSubmit(e) {
   btn.disabled = true;
   btn.textContent = 'Opening...';
 
-  // TODO: Send lead data to your backend/webhook here
-  // fetch('/api/lead', { method:'POST', body: JSON.stringify({name, email}) })
+  fetch('https://script.google.com/macros/s/AKfycbw2cJsO--DjwoXgG7yEaDQdaz1HRi7NpMJ_62f4PGY1CHpYYstal4jgdQd0OAWScaVu/exec', {
+    method: 'POST',
+    body: JSON.stringify({ name, email })
+  }).catch(() => {});
 
   setTimeout(() => {
     window.open('viewer.html', '_blank');
@@ -322,7 +324,7 @@ function handleSubmit(e) {
     btn.disabled = false;
     btn.textContent = 'Continue';
     form.reset();
-  }, 400);
+  }, 600);
 }
 </script>
 </body>
